@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday My Love 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive;
+    overflow-x: hidden;
+}
+
+h1 {
+    margin-top: 40px;
+    color: white;
+    font-size: 38px;
+    text-shadow: 0 0 10px red, 0 0 20px pink;
+}
+
+#typing {
+    color: white;
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+img {
+    margin: 10px;
+    border-radius: 20px;
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    background: red;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#hiddenMessage {
+    display: none;
+    margin-top: 30px;
+    font-size: 22px;
+    color: yellow;
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh);}
+    100% {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Music -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<h1>Happy Birthday My Queen ❤️🎂</h1>
+
+<!-- ✍️ Typewriter -->
+<p id="typing"></p>
+
+<!-- 🖼️ Photos -->
+<img src="IMG_20260410_231747.png" width="200">
+
+
+<br>
+
+<!-- 🎁 Buttons -->
+<button onclick="showMessage()">Click for Surprise 🎁</button>
+<br>
+<button onclick="loveAlert()">Click Me Again 😘</button>
+
+<!-- 💌 Hidden Message -->
+<div id="hiddenMessage">
+    💖 I LOVE YOU FOREVER 💖 <br><br>
+    You are my happiness, my everything 😘 <br>
+    Stay with me always ❤️
+</div>
+
+<!-- 🎉 Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+/* ✍️ Typewriter Effect */
+let text = "You are my happiness, my love, my everything 💖";
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+    }
+}
+typeWriter();
+
+/* 🎁 Show Message */
+function showMessage() {
+    document.getElementById("hiddenMessage").style.display = "block";
+}
+
+/* 💌 Love Alert */
+function loveAlert() {
+    alert("I Love You So Much ❤️ You Are My Life 💖");
+}
+
+/* 💖 Floating Hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+setInterval(createHeart, 300);
+
+/* 🎉 Confetti */
+setInterval(() => {
+    confetti({
+        particleCount: 40,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+}, 2000);
+</script>
+
+</body>
+</html>
